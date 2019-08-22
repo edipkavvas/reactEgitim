@@ -5,11 +5,14 @@ import LogoPage from "./logo";
 import DenemePage from "./deneme";
 //import NotFoundPage from "./notFound";
 import GlobalStatePage from "./global";
+import LoginPage from "./login";
 
 function App() {
   return (
     <Router>
-      <Route path="/" exact component={MasterPage} />
+      <Route path="/" exact component={LoginPage} />
+      <Route path="/login" exact component={LoginPage} />
+      <Route path="/master" exact component={MasterPage} />
       <Route path="/logo" component={LogoPage} />
       <Route path="/deneme" component={DenemePage} />
       <Route path="/global" component={GlobalStatePage} />

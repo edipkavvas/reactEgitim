@@ -11,12 +11,7 @@ export const setValue = value => {
   });
 };
 
-export const denemeServiceCall = requestModel => {
-  let postData = {
-    email: "eve.holt@reqres.in",
-    password: "pistol"
-  };
-
+export const denemeServiceCall = postData => {
   return new Promise(resolve => {
     let result = false;
     serviceCaller
