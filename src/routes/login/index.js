@@ -2,9 +2,27 @@ import React from "react";
 import * as yup from "yup";
 import { Formik } from "formik";
 import TextField from "@material-ui/core/TextField";
+import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import * as Actions from "../../states/actions/counter";
 import "./style.css";
+
+const styles = theme => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap"
+  },
+  textfield: {
+    marginLeft: 50,
+    width: 200
+  },
+  button: {
+    marginLeft: 50,
+    marginTop: 30,
+    width: 200
+  }
+});
 
 const LoginSchema = yup.object().shape({
   email: yup
@@ -37,7 +55,7 @@ class LoginPage extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome To Login Page</h1>
+        <h1 className="header-style">Welcome To Login Page</h1>
         <Formik
           initialValues={{ email: "", password: "" }}
           onSubmit={(values, props) => this.handleSubmit(values, props)}
@@ -51,11 +69,14 @@ class LoginPage extends React.Component {
               handleChange,
               handleBlur,
               handleSubmit,
-              isSubmitting
+              isSubmitting,
+              classes = this.props.classes
             } = props;
+
             return (
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className={classes.root}>
                 <TextField
+                  className={classes.textfield}
                   label="email"
                   name="email"
                   value={values.email}
@@ -63,10 +84,11 @@ class LoginPage extends React.Component {
                   onBlur={handleBlur}
                   helperText={touched.email && errors.email}
                   margin="normal"
-                  error={touched.email && errors.email}
+                  error={touched.email && !!errors.email}
+                  autoComplete="off"
                 />
-                <br />
                 <TextField
+                  className={classes.textfield}
                   label="password"
                   name="password"
                   type="password"
@@ -75,10 +97,15 @@ class LoginPage extends React.Component {
                   onBlur={handleBlur}
                   helperText={touched.password && errors.password}
                   margin="normal"
-                  error={touched.password && errors.password}
+                  error={touched.password && !!errors.password}
                 />
-                <br />
-                <Button type="submit" disabled={isSubmitting}>
+                <Button
+                  className={classes.button}
+                  type="submit"
+                  disabled={isSubmitting}
+                  variant="contained"
+                  color="primary"
+                >
                   Submit
                 </Button>
               </form>
@@ -90,4 +117,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default withStyles(styles)(LoginPage);
