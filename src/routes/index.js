@@ -7,7 +7,7 @@ import DenemePage from "./deneme";
 import GlobalStatePage from "./global";
 import LoginPage from "./login";
 
-function App() {
+const App = props => {
   return (
     <Router>
       <Route path="/" exact component={LoginPage} />
@@ -19,6 +19,6 @@ function App() {
       {/* <Route component={NotFoundPage} /> */}
     </Router>
   );
-}
+};
 
 export default App;
