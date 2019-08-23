@@ -1,4 +1,5 @@
 import axios from "axios";
+import { showAlert } from "../states/actions/app";
 
 let errorMessage = "";
 
@@ -17,6 +18,10 @@ serviceCaller.interceptors.request.use(
   error => {
     // Your Interceptor code to do something with request error
     // Return error
+    showAlert({
+      title: "Hata!",
+      errorMessage: error.response.data.error
+    });
     return Promise.reject(handleNetworkErrors(error));
   }
 );
@@ -29,12 +34,20 @@ serviceCaller.interceptors.response.use(
       return response.data;
     } else {
       // Return error
+      showAlert({
+        title: "Hata!",
+        errorMessage: errorMessage
+      });
       return Promise.reject(errorMessage);
     }
   },
   error => {
     // Your Interceptor code to do something with response error
     // Return error
+    showAlert({
+      title: "Hata!",
+      errorMessage: error.response.data.error
+    });
     return Promise.reject(handleNetworkErrors(error));
   }
 );

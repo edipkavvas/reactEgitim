@@ -45,6 +45,7 @@ class LoginPage extends React.Component {
 
     Actions.denemeServiceCall(values).then(response => {
       if (response) {
+        console.log("response : ", response);
         this.props.history.push("/master");
       } else {
         console.log("Service fail döndü");
