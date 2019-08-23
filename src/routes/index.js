@@ -9,6 +9,7 @@ import GlobalStatePage from "./global";
 import LoginPage from "./login";
 import AlertBox from "../components/alertBox";
 import { hideAlert } from "../states/actions/app";
+import TabExamplePage from "./tabExample";
 
 const App = props => {
   const { showAlert, title, message, buttonText } = props;
@@ -22,6 +23,7 @@ const App = props => {
       <Router>
         <Route path="/" exact component={LoginPage} />
         <Route path="/login" exact component={LoginPage} />
+        <Route path="/tabexample" exact component={TabExamplePage} />
         <Route path="/master" exact component={MasterPage} />
         <Route path="/logo" component={LogoPage} />
         <Route path="/deneme" component={DenemePage} />
