@@ -10,6 +10,7 @@ import LoginPage from "./login";
 import AlertBox from "../components/alertBox";
 import { hideAlert } from "../states/actions/app";
 import TabExamplePage from "./tabExample";
+import RadioExamplePage from "./radioExample";
 
 const App = props => {
   const { showAlert, title, message, buttonText } = props;
@@ -28,6 +29,7 @@ const App = props => {
         <Route path="/logo" component={LogoPage} />
         <Route path="/deneme" component={DenemePage} />
         <Route path="/global" component={GlobalStatePage} />
+        <Route path="/radioexample" component={RadioExamplePage} />
         {/* <Route component={NotFoundPage} /> */}
       </Router>
       <AlertBox
