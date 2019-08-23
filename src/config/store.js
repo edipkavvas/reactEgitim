@@ -1,4 +1,8 @@
-import { createStore, combineReducers } from "redux";
-import { rootReducer } from "../states/reducers";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import { CreateJumpstateMiddleware } from "jumpstate";
+import states from "../states";
 
-export const store = createStore(combineReducers(rootReducer));
+export const store = createStore(
+  combineReducers(states),
+  applyMiddleware(CreateJumpstateMiddleware())
+);

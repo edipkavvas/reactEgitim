@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as Actions from "../../states/actions/counter";
+import counterState from "../../states/counter/counterState";
 import "./style.css";
 
 class GlobalStatePage extends React.Component {
@@ -12,12 +12,12 @@ class GlobalStatePage extends React.Component {
   }
 
   handleInputChange(event) {
-    Actions.setValue(event.target.value);
+    counterState.setValue(event.target.value);
   }
 
   handleServiceCall() {
     let requestModel = {};
-    Actions.denemeServiceCall(requestModel).then(response => {
+    counterState.denemeServiceCall(requestModel).then(response => {
       if (response) {
         console.log(response);
       } else {
@@ -58,10 +58,10 @@ class GlobalStatePage extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    counterProp: state.counter.counterValue,
-    id: state.counter.id,
-    token: state.counter.token,
-    errorMsg: state.counter.errorMsg
+    counterProp: state.counterState.counterValue,
+    id: state.counterState.id,
+    token: state.counterState.token,
+    errorMsg: state.counterState.errorMsg
   };
 }
 

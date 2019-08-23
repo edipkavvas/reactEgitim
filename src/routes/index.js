@@ -8,15 +8,16 @@ import DenemePage from "./deneme";
 import GlobalStatePage from "./global";
 import LoginPage from "./login";
 import AlertBox from "../components/alertBox";
-import { hideAlert } from "../states/actions/app";
+import appState from "../states/app/appState";
 import TabExamplePage from "./tabExample";
 import RadioExamplePage from "./radioExample";
+import AlternativePage from "./alternative";
 
 const App = props => {
   const { showAlert, title, message, buttonText } = props;
 
   const handleClose = () => {
-    hideAlert();
+    appState.hideAlert();
   };
 
   return (
@@ -30,6 +31,7 @@ const App = props => {
         <Route path="/deneme" component={DenemePage} />
         <Route path="/global" component={GlobalStatePage} />
         <Route path="/radioexample" component={RadioExamplePage} />
+        <Route path="/alternative" component={AlternativePage} />
         {/* <Route component={NotFoundPage} /> */}
       </Router>
       <AlertBox
@@ -45,10 +47,10 @@ const App = props => {
 
 function mapStateToProps(state, ownProps) {
   return {
-    showAlert: state.app.isAlertOpen,
-    title: state.app.errorTitle,
-    message: state.app.errorMessage,
-    buttonText: state.app.errorButtonText
+    showAlert: state.appState.isAlertOpen,
+    title: state.appState.errorTitle,
+    message: state.appState.errorMessage,
+    buttonText: state.appState.errorButtonText
   };
 }
 

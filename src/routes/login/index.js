@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import * as Actions from "../../states/actions/counter";
+import counterState from "../../states/counter/counterState";
 import "./style.css";
 
 const styles = theme => ({
@@ -43,7 +43,7 @@ class LoginPage extends React.Component {
       props.setFieldTouched();
     }
 
-    Actions.denemeServiceCall(values).then(response => {
+    counterState.denemeServiceCall(values).then(response => {
       if (response) {
         console.log("response : ", response);
         this.props.history.push("/master");

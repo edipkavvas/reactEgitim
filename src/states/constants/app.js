@@ -1,1 +1,0 @@
-export const APP_SET_ALERT_STATUS = "APP_SET_ALERT_STATUS";
